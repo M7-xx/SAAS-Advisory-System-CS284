@@ -10,6 +10,15 @@
             font-family: 'Inter', sans-serif; margin: 0; height: 100vh;
             display: flex; align-items: center; justify-content: center;
             background: linear-gradient(135deg, var(--taibah-blue) 0%, #0d1b2a 100%);
+          -webkit-user-select: none; 
+            -moz-user-select: none;    
+            -ms-user-select: none;     
+            user-select: none;
+        } input, textarea {
+        -webkit-user-select: auto;
+        -moz-user-select: auto;
+        -ms-user-select: auto;
+        user-select: auto; 
         }
         .login-card {
             background: var(--glass); padding: 50px 40px; border-radius: 24px;
