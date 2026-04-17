@@ -21,7 +21,16 @@
         background-color: var(--bg-gray);
         display: flex;
         color: var(--text-dark);
-    }
+      -webkit-user-select: none; 
+            -moz-user-select: none;    
+            -ms-user-select: none;     
+            user-select: none;
+        } input, textarea {
+        -webkit-user-select: auto;
+        -moz-user-select: auto;
+        -ms-user-select: auto;
+        user-select: auto; 
+        }
 
     /* Sidebar Styling */
     .sidebar {
