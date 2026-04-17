@@ -18,8 +18,17 @@
             margin: 0;
             background-color: var(--bg-gray);
             display: flex;
+            -webkit-user-select: none; 
+            -moz-user-select: none;    
+            -ms-user-select: none;     
+            user-select: none;
+        } input, textarea {
+        -webkit-user-select: auto;
+        -moz-user-select: auto;
+        -ms-user-select: auto;
+        user-select: auto; 
         }
-
+        
         /* High-Quality Sidebar - Standardized so it won't jump! */
         .sidebar {
             width: 260px;
