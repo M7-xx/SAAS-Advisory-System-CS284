@@ -6,7 +6,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --taibah-blue: #1B3A5C; --taibah-gold: #C5A059; --bg-gray: #f4f7f9; --glass: rgba(255, 255, 255, 0.95); }
-        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--bg-gray); display: flex; }
+        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--bg-gray); display: flex; 
+               -webkit-user-select: none; 
+            -moz-user-select: none;    
+            -ms-user-select: none;     
+            user-select: none;
+        } input, textarea {
+        -webkit-user-select: auto;
+        -moz-user-select: auto;
+        -ms-user-select: auto;
+        user-select: auto; 
+        }
         
         /* Fixed Sidebar - Same as Dashboard */
         .sidebar { width: 260px; height: 100vh; background: linear-gradient(180deg, var(--taibah-blue) 0%, #0d1b2a 100%); color: white; position: fixed; padding: 25px 15px; box-sizing: border-box; }
