@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAAS | Secure Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root { --taibah-blue: #1B3A5C; --taibah-gold: #C5A059; --glass: rgba(255, 255, 255, 0.95); }
         body { 
-            font-family: 'Inter', sans-serif; margin: 0; height: 100vh;
+            font-family: 'Inter', sans-serif; margin: 0; height: 100vh; overflow: hidden;
             display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(135deg, var(--taibah-blue) 0%, #0d1b2a 100%);
+            background: linear-gradient(135deg, var(--taibah-blue) 0%, #0d1b2a 100%); background-attachment: fixed;
             cursor: default;
             caret-color: transparent;
         }
@@ -23,13 +25,13 @@
             background: var(--glass); padding: 50px 40px; border-radius: 24px;
             width: 100%; max-width: 420px; text-align: center;
             box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); backdrop-filter: blur(10px);
-            user-select: none; -webkit-user-select: none; /* Blocks carets in empty space */
+            user-select: none; -webkit-user-select: none; box-sizing: border-box; margin: 20px;
         }
         .login-card h2, .login-card a { user-select: text; -webkit-user-select: text; } /* Keeps text copyable */
         .logo { width: 220px; margin-bottom: 30px; }
         input {
             width: 100%; padding: 14px; margin: 12px 0; border: 1px solid #e2e8f0;
-            border-radius: 12px; box-sizing: border-box; background: #f8fafc;
+            border-radius: 12px; box-sizing: border-box; background: #f8fafc; font-size: 16px;
         }
         
         /* Updated Button Styles for Roles */
@@ -46,6 +48,12 @@
 
         .links { margin-top: 25px; display: flex; justify-content: space-between; font-size: 0.85rem; }
         .links a { color: var(--taibah-blue); text-decoration: none; font-weight: 600; }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 480px) {
+            .login-card { padding: 40px 25px; margin: 15px; }
+            .logo { width: 180px; }
+        }
     </style>
 </head>
 <body>

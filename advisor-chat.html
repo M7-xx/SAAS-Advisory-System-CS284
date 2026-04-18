@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAAS | Advisor Messages</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root { --taibah-blue: #1B3A5C; --taibah-gold: #C5A059; --bg-gray: #f1f5f9; --text-dark: #2d3748; }
-        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--bg-gray); display: flex; height: 100vh; cursor: default; caret-color: transparent; }
+        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--bg-gray); display: flex; height: 100dvh; cursor: default; caret-color: transparent; }
         
         /* Force arrow cursor and hide blinking carets on all text, while keeping inputs working */
         h1, h2, h3, p, span, strong, div, td, th { cursor: default; caret-color: transparent; }
@@ -14,7 +16,7 @@
         a, button { cursor: pointer; caret-color: transparent; }
 
         /* Unified Sidebar Quality */
-        .sidebar { width: 260px; height: 100vh; background: linear-gradient(180deg, var(--taibah-blue) 0%, #0d1b2a 100%); color: white; position: fixed; padding: 25px 15px; box-sizing: border-box; }
+        .sidebar { width: 260px; height: 100dvh; background: linear-gradient(180deg, var(--taibah-blue) 0%, #0d1b2a 100%); color: white; position: fixed; padding: 25px 15px; box-sizing: border-box; }
         .logo-section { text-align: center; margin-bottom: 10px; }
         .logo-placeholder { width: 180px; filter: brightness(0) invert(1); }
         
@@ -22,7 +24,10 @@
 
         .nav-link { padding: 12px 15px; display: flex; align-items: center; color: #e2e8f0; text-decoration: none; border-radius: 12px; margin-bottom: 8px; gap: 15px; transition: 0.3s; }
         .nav-link i { width: 20px; text-align: center; }
-        .nav-link:hover, .nav-link.active { background: rgba(255, 255, 255, 0.15); color: white; transform: translateX(5px); }
+        .nav-link.active { background: rgba(255, 255, 255, 0.15); color: white; transform: translateX(5px); }
+        @media (hover: hover) {
+            .nav-link:hover { background: rgba(255, 255, 255, 0.15); color: white; transform: translateX(5px); }
+        }
 
         /* Chat Container - Fixed margin to respect Sidebar */
         .chat-container { margin-left: 280px; margin-top: 25px; margin-right: 25px; margin-bottom: 25px; flex-grow: 1; display: flex; background: white; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #e2e8f0; }
@@ -59,30 +64,59 @@
         
         .time { font-size: 0.7rem; opacity: 0.7; display: block; text-align: right; margin-top: 5px; }
         .input-bar { padding: 25px 35px; border-top: 1px solid #f1f5f9; display: flex; gap: 15px; user-select: none; -webkit-user-select: none; }
-        input { flex-grow: 1; padding: 15px; border-radius: 15px; border: 1px solid #e2e8f0; outline: none; }
+        input { flex-grow: 1; padding: 15px; border-radius: 15px; border: 1px solid #e2e8f0; outline: none; font-size: 16px; }
         .send-btn { background: var(--taibah-blue); color: white; width: 55px; border-radius: 15px; border: none; cursor: pointer; }
+
+        .mobile-btn { display: none; background: none; border: none; font-size: 1.5rem; color: var(--taibah-blue); cursor: pointer; padding: 0; }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .mobile-btn { display: block; }
+            .sidebar { position: fixed; left: -260px; top: 0; width: 260px; height: 100dvh; z-index: 2000; transition: left 0.3s ease; }
+            .sidebar.show { left: 0; }
+            
+            .chat-container { margin: 0; border-radius: 0; border: none; width: 100%; height: 100dvh; position: relative; }
+            
+            /* Contacts off-canvas */
+            .contacts { position: absolute; left: -320px; top: 0; height: 100%; z-index: 1500; transition: left 0.3s ease; border-right: 1px solid #e2e8f0; box-shadow: 5px 0 15px rgba(0,0,0,0.1); width: 280px; display: block; background: #f8fafc; }
+            .contacts.show { left: 0; }
+            .contact-item { width: 100%; box-sizing: border-box; }
+            
+            .chat-area { padding: 20px; }
+            .bubble { max-width: 90%; }
+            .input-bar { padding: 15px; }
+        }
     </style>
 </head>
 <body>
     <aside class="sidebar">
-        <div class="logo-section"><img src="https://www.taibahu.edu.sa/themes/custom/taiu_saud/logo.svg" class="logo-placeholder"></div>
+        <div class="logo-section" style="position: relative;">
+            <button class="mobile-btn" onclick="document.querySelector('.sidebar').classList.remove('show')" style="position: absolute; right: -5px; top: -5px; color: white;"><i class="fa-solid fa-bars"></i></button>
+            <img src="https://www.taibahu.edu.sa/themes/custom/taiu_saud/logo.svg" class="logo-placeholder">
+        </div>
         
         <div class="sidebar-brand"></div>
 
         <nav>
             <a href="Advisor Panel.html" class="nav-link"><i class="fa-solid fa-user-graduate"></i> Student Requests</a>
-            <a href="#" class="nav-link"><i class="fa-solid fa-calendar-days"></i> Manage Schedule</a>
-            <a href="#" class="nav-link"><i class="fa-solid fa-file-invoice"></i> Academic Reports</a>
+            <a href="#" class="nav-link"><i class="fa-solid fa-calendar-days"></i> Manage Schedule <span style="font-size: 0.6rem; background: var(--taibah-gold); color: white; padding: 2px 6px; border-radius: 10px; margin-left: auto;">SOON</span></a>
+            <a href="#" class="nav-link"><i class="fa-solid fa-file-invoice"></i> Academic Reports <span style="font-size: 0.6rem; background: var(--taibah-gold); color: white; padding: 2px 6px; border-radius: 10px; margin-left: auto;">SOON</span></a>
             <a href="advisor-chat.html" class="nav-link active"><i class="fa-solid fa-comment-dots"></i> Messages</a>
             <a href="index.html" class="nav-link" style="margin-top: 50px;"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            <div style="position: absolute; bottom: calc(30px + env(safe-area-inset-bottom)); left: 0; width: 100%; text-align: center;">
+                <a href="#" style="color: #94a3b8; text-decoration: none; font-size: 0.85rem;"><i class="fa-solid fa-globe"></i> English / عربي</a>
+            </div>
         </nav>
     </aside>
 
     <div class="chat-container">
-        <div class="contacts">
-            <div style="padding: 25px; font-weight: 800; font-size: 1.4rem; color: var(--taibah-blue);">Student Chats</div>
+        <div class="contacts show">
+            <div style="padding: 25px; font-weight: 800; font-size: 1.4rem; color: var(--taibah-blue); display: flex; justify-content: space-between; align-items: center;">
+                <span>Student Chats</span>
+                <button class="mobile-btn" onclick="document.querySelector('.contacts').classList.remove('show')"><i class="fa-solid fa-bars"></i></button>
+            </div>
             
-            <div class="contact-item active">
+            <div class="contact-item active" id="contact-mohammed" onclick="switchChat('mohammed')">
                 <div style="width: 50px; height: 50px; background: #e2e8f0; border-radius: 12px; margin-right: 15px; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-user-graduate" style="color: #64748b;"></i></div>
                 <div class="contact-info">
                     <strong>Mohammed</strong>
@@ -90,19 +124,23 @@
                 </div>
             </div>
             
-            <div class="contact-item">
+            <div class="contact-item" id="contact-abdulaziz" onclick="switchChat('abdulaziz')">
                 <div style="width: 50px; height: 50px; background: #e2e8f0; border-radius: 12px; margin-right: 15px; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-user-graduate" style="color: var(--taibah-blue);"></i></div>
                 <div class="contact-info">
-                    <strong style="color: var(--taibah-blue);">Ahmed</strong>
+                    <strong style="color: var(--taibah-blue);">Abdulaziz</strong>
                     <p style="margin:5px 0 0; font-size: 0.85rem; color: var(--text-dark); font-weight: 600;">When is the next available...</p>
                 </div>
                 <div class="unread-badge">1</div>
             </div>
         </div>
         
-        <div class="window">
-            <div style="padding: 25px 35px; border-bottom: 1px solid #f1f5f9; font-weight: bold; display: flex; justify-content: space-between; align-items: center;">
-                <span>Mohammed | ID: 44000XXX</span>
+        <div class="window" id="chat-mohammed">
+            <div style="padding: 20px 25px; border-bottom: 1px solid #f1f5f9; font-weight: bold; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <button class="mobile-btn" onclick="document.querySelector('.sidebar').classList.toggle('show')"><i class="fa-solid fa-bars"></i></button>
+                    <button class="mobile-btn" onclick="document.querySelector('.contacts').classList.toggle('show')"><i class="fa-solid fa-address-book"></i></button>
+                    <span>Mohammed | ID: 44000XXX</span>
+                </div>
                 <span style="font-size: 0.85rem; color: #2ecc71;"><i class="fa-solid fa-circle" style="font-size: 0.6rem; margin-right: 5px;"></i>Online</span>
             </div>
             
@@ -123,6 +161,116 @@
                 <button class="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
             </div>
         </div>
+        
+        <div class="window" id="chat-abdulaziz" style="display: none;">
+            <div style="padding: 20px 25px; border-bottom: 1px solid #f1f5f9; font-weight: bold; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <button class="mobile-btn" onclick="document.querySelector('.sidebar').classList.toggle('show')"><i class="fa-solid fa-bars"></i></button>
+                    <button class="mobile-btn" onclick="document.querySelector('.contacts').classList.toggle('show')"><i class="fa-solid fa-address-book"></i></button>
+                    <span>Abdulaziz | ID: 44001XXX</span>
+                </div>
+                <span style="font-size: 0.85rem; color: #f39c12;"><i class="fa-solid fa-circle" style="font-size: 0.6rem; margin-right: 5px;"></i>Away</span>
+            </div>
+            
+            <div class="chat-area">
+                <div class="bubble student">When is the next available slot for registration?
+                    <span class="time">Yesterday, 3:30 PM</span>
+                </div>
+            </div>
+            
+            <div class="input-bar">
+                <input type="text" placeholder="Type your reply to Abdulaziz...">
+                <button class="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
     </div>
+
+    <script>
+        // Close mobile menus when clicking outside
+        document.addEventListener('click', (e) => {
+            const sidebar = document.querySelector('.sidebar');
+            const contacts = document.querySelector('.contacts');
+            
+            if (sidebar && sidebar.classList.contains('show') && !e.target.closest('.sidebar') && !e.target.closest('.mobile-btn')) {
+                sidebar.classList.remove('show');
+            }
+            if (contacts && contacts.classList.contains('show') && !e.target.closest('.contacts') && !e.target.closest('.mobile-btn')) {
+                contacts.classList.remove('show');
+            }
+        });
+
+        // Handle dummy sidebar links (do nothing)
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') {
+                    e.preventDefault();
+                    this.classList.add('active');
+                    setTimeout(() => {
+                        this.classList.remove('active');
+                        this.blur();
+                    }, 500);
+                }
+            });
+        });
+
+        function switchChat(studentId) {
+            // Hide all chats
+            document.getElementById('chat-mohammed').style.display = 'none';
+            document.getElementById('chat-abdulaziz').style.display = 'none';
+            
+            // Remove active highlight from all contacts
+            document.getElementById('contact-mohammed').classList.remove('active');
+            document.getElementById('contact-abdulaziz').classList.remove('active');
+            
+            // Show the selected chat and highlight the contact
+            document.getElementById('chat-' + studentId).style.display = 'flex';
+            document.getElementById('contact-' + studentId).classList.add('active');
+            
+            // Remove the unread badge once Abdulaziz is clicked
+            if(studentId === 'abdulaziz') {
+                const badge = document.querySelector('#contact-abdulaziz .unread-badge');
+                if(badge) badge.style.display = 'none';
+                
+                const name = document.querySelector('#contact-abdulaziz strong');
+                if(name) name.style.color = '';
+                
+                const preview = document.querySelector('#contact-abdulaziz p');
+                if(preview) {
+                    preview.style.fontWeight = 'normal';
+                    preview.style.color = '#64748b';
+                }
+            }
+            
+            // Automatically close the mobile contact list after tapping a name
+            if(window.innerWidth <= 768) document.querySelector('.contacts').classList.remove('show');
+        }
+
+        // Send Chat Message Logic
+        document.querySelectorAll('.send-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const input = this.closest('.input-bar').querySelector('input');
+                const text = input.value.trim();
+                if (text === '') return;
+                
+                const chatArea = this.closest('.window').querySelector('.chat-area');
+                const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble advisor'; // Advisor styling
+                bubble.innerHTML = `${text} <span class="time">${time}</span>`;
+                
+                chatArea.appendChild(bubble);
+                input.value = '';
+                chatArea.scrollTop = chatArea.scrollHeight; // Auto-scroll to bottom
+            });
+        });
+
+        // Allow pressing Enter to send
+        document.querySelectorAll('.input-bar input').forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') this.closest('.input-bar').querySelector('.send-btn').click();
+            });
+        });
+    </script>
 </body>
 </html>
