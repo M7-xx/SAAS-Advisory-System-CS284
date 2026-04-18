@@ -21,16 +21,14 @@
         background-color: var(--bg-gray);
         display: flex;
         color: var(--text-dark);
-      -webkit-user-select: none; 
-            -moz-user-select: none;    
-            -ms-user-select: none;     
-            user-select: none;
-        } input, textarea {
-        -webkit-user-select: auto;
-        -moz-user-select: auto;
-        -ms-user-select: auto;
-        user-select: auto; 
+        cursor: default;
+        caret-color: transparent;
         }
+
+    /* Force arrow cursor and hide blinking carets on all text, while keeping inputs working */
+    h1, h2, h3, p, span, strong, div, td, th { cursor: default; caret-color: transparent; }
+    input, textarea { cursor: text; caret-color: auto; }
+    a, button { cursor: pointer; caret-color: transparent; }
 
     /* Sidebar Styling */
     .sidebar {

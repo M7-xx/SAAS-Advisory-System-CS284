@@ -10,21 +10,22 @@
             font-family: 'Inter', sans-serif; margin: 0; height: 100vh;
             display: flex; align-items: center; justify-content: center;
             background: linear-gradient(135deg, var(--taibah-blue) 0%, #0d1b2a 100%);
-          -webkit-user-select: none; 
-            -moz-user-select: none;    
-            -ms-user-select: none;     
-            user-select: none;
-        } input, textarea {
-        -webkit-user-select: auto;
-        -moz-user-select: auto;
-        -ms-user-select: auto;
-        user-select: auto; 
+            cursor: default;
+            caret-color: transparent;
         }
+        
+        /* Force arrow cursor and hide blinking carets on all text, while keeping inputs working */
+        h1, h2, h3, p, span, strong, div, td, th { cursor: default; caret-color: transparent; }
+        input, textarea { cursor: text; caret-color: auto; }
+        a, button { cursor: pointer; caret-color: transparent; }
+
         .login-card {
             background: var(--glass); padding: 50px 40px; border-radius: 24px;
             width: 100%; max-width: 420px; text-align: center;
             box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); backdrop-filter: blur(10px);
+            user-select: none; -webkit-user-select: none; /* Blocks carets in empty space */
         }
+        .login-card h2, .login-card a { user-select: text; -webkit-user-select: text; } /* Keeps text copyable */
         .logo { width: 220px; margin-bottom: 30px; }
         input {
             width: 100%; padding: 14px; margin: 12px 0; border: 1px solid #e2e8f0;
