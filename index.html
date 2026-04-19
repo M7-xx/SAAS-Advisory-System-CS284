@@ -6,57 +6,9 @@
     <title>SAAS | Secure Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        :root { --taibah-blue: #1B3A5C; --taibah-gold: #C5A059; --glass: rgba(255, 255, 255, 0.95); }
-        body { 
-            font-family: 'Inter', sans-serif; margin: 0; height: 100vh; overflow: hidden;
-            display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(135deg, var(--taibah-blue) 0%, #0d1b2a 100%); background-attachment: fixed;
-            cursor: default;
-            caret-color: transparent;
-        }
-        
-        /* Force arrow cursor and hide blinking carets on all text, while keeping inputs working */
-        h1, h2, h3, p, span, strong, div, td, th { cursor: default; caret-color: transparent; }
-        input, textarea { cursor: text; caret-color: auto; }
-        a, button { cursor: pointer; caret-color: transparent; }
-
-        .login-card {
-            background: var(--glass); padding: 50px 40px; border-radius: 24px;
-            width: 100%; max-width: 420px; text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); backdrop-filter: blur(10px);
-            user-select: none; -webkit-user-select: none; box-sizing: border-box; margin: 20px;
-        }
-        .login-card h2, .login-card a { user-select: text; -webkit-user-select: text; } /* Keeps text copyable */
-        .logo { width: 220px; margin-bottom: 30px; }
-        input {
-            width: 100%; padding: 14px; margin: 12px 0; border: 1px solid #e2e8f0;
-            border-radius: 12px; box-sizing: border-box; background: #f8fafc; font-size: 16px;
-        }
-        
-        /* Updated Button Styles for Roles */
-        .btn {
-            width: 100%; padding: 14px; border-radius: 12px; font-weight: bold; 
-            cursor: pointer; transition: 0.3s; margin-top: 10px; border: none;
-            display: flex; justify-content: center; align-items: center; gap: 10px;
-        }
-        .btn-student { background: var(--taibah-blue); color: white; }
-        .btn-student:hover { background: #2a4d7a; transform: translateY(-2px); }
-        
-        .btn-advisor { background: var(--taibah-gold); color: white; margin-top: 15px; }
-        .btn-advisor:hover { background: #b08d4a; transform: translateY(-2px); }
-
-        .links { margin-top: 25px; display: flex; justify-content: space-between; font-size: 0.85rem; }
-        .links a { color: var(--taibah-blue); text-decoration: none; font-weight: 600; }
-        
-        /* Mobile Responsiveness */
-        @media (max-width: 480px) {
-            .login-card { padding: 40px 25px; margin: 15px; }
-            .logo { width: 180px; }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="login-body">
     <div class="login-card">
         <img src="https://www.taibahu.edu.sa/themes/custom/taiu_saud/logo.svg" alt="Taibah Logo" class="logo">
         <h2 style="color: var(--taibah-blue); margin-bottom: 30px;">Academic Advisory</h2>
